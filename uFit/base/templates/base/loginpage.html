@@ -23,11 +23,17 @@
         width: 300px;
         text-align: center;
       }
-      .logo {
-        font-size: 36px;
+      /* Logo Styling */
+      #uFit-logo {
+        font-size: 60px;
         font-weight: bold;
-        color: #333;
+        color: rgba(32, 201, 151, 1);
         margin-bottom: 20px;
+        letter-spacing: 2px;
+        font-style: italic;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: rgba(0, 0, 0, 1);
+        paint-order: stroke fill;
       }
       input[type="text"],
       input[type="password"] {
@@ -63,17 +69,19 @@
   </head>
   <body>
     <div class="login-container">
-      <div class="logo">UFIT</div>
-      <form>
-        <input type="text" placeholder="Username" required /><br />
-        <input type="password" placeholder="Password" required /><br />
-        <button type="submit">Login</button>
-      </form>
-      <div class="signup">
-        <p>
-          Don't have an account? <a href="registration_page.html">Sign up</a>
-        </p>
-      </div>
+        <div id="uFit-logo">UFIT</div>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required /><br />
+            <input type="password" name="password" placeholder="Password" required /><br />
+            <button type="submit">Login</button>
+        </form>
+        <div class="signup">
+            <p>
+                Don't have an account? <a href="{% url 'registrationpage' %}">Sign up</a>
+            </p>
+        </div>
     </div>
-  </body>
+</body>
+
 </html>

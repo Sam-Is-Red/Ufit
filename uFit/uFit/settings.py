@@ -56,7 +56,10 @@ ROOT_URLCONF = "uFit.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        'DIRS': [
+            BASE_DIR / 'templates',  # Root level templates folder
+            BASE_DIR / 'base' / 'templates',  # 'base' app templates folder
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -125,3 +128,6 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = 'base/home'  # Redirect to home page after login
+LOGOUT_REDIRECT_URL = 'base/loginpage' # Redirect to login page after

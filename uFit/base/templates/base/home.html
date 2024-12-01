@@ -1,78 +1,16 @@
-{% extends 'main.html' %}
-
-{% block content %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
     <title>UFIT Home Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px;
-        }
-        .feed {
-            flex: 2;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-right: 20px;
-        }
-        .feed h2 {
-            margin-bottom: 20px;
-        }
-        .post {
-            padding: 15px;
-            background-color: #f9f9f9;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        .events {
-            flex: 1;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .events h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .day {
-            background-color: #f1f1f1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        .day h3 {
-            margin: 0;
-        }
-        /* Responsive layout for mobile */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-            .feed, .events {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-        }
-    </style>
+
 </head>
 <body>
-
+    {% include 'navbar.html' %}
     <div class="container">
         <!-- Feed Section -->
         <div class="feed">
@@ -133,8 +71,9 @@
             </div>
         </div>
     </div>
+
+    {% include 'footer.html' %}
 </body>
 </html>
 
 
-{% endblock content %}

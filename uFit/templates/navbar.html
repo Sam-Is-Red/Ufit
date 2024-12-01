@@ -36,10 +36,10 @@
                 <div class="user-info">
                     <img
                         src="https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg">
-                    <h3>@IssacLin</h3>
+                    <h3>@{{ user.username }}</h3>
                 </div>
-                <a href="" class="options-links">Edit Profile</a>
-                <a href="" class="options-links">Logout</a>
+                <a href="{% url 'profilepage' %}" class="options-links">Edit Profile</a>
+                <a href="{% url 'loginpage' %}" class="options-links">Logout</a>
             </div>
         </div>
     </div>

@@ -20,14 +20,19 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            width: 500px;
             text-align: center;
         }
         .logo {
-            font-size: 36px;
+            font-size: 60px;
             font-weight: bold;
-            color: #333;
+            color: rgba(32, 201, 151, 1);
             margin-bottom: 20px;
+            letter-spacing: 2px;
+            font-style: italic;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: rgba(0, 0, 0, 1);
+            paint-order: stroke fill;
         }
         input[type="text"], input[type="email"], input[type="password"] {
             width: 93%;
@@ -63,19 +68,13 @@
 <body>
     <div class="register-container">
         <div class="logo">UFIT</div>
-        <form action="/register" method="POST">
-            <input type="text" id="username" name="username" placeholder="Username" required><br>
-            
-            <input type="email" id="email" name="email" placeholder="Email" required><br>
-            
-            <input type="password" id="password" name="password" placeholder="Password" required><br>
-            
-            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required><br>
-            
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
             <button type="submit">Sign Up</button>
         </form>
         <div class="login-link">
-            <p>Already have an account? <a href="login_page.html">Log in</a></p>
+            <p>Already have an account? <a href="{% url 'loginpage' %}">Log in</a></p>
         </div>
     </div>
 </body>
