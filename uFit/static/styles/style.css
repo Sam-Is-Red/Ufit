@@ -143,6 +143,10 @@ button:focus {
 
 /* footer styling*/
 .uFit-footer {
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
     background-color: rgba(32, 201, 151, 1);
     color: rgba(255, 255, 255, 1);
     padding: 20px;
