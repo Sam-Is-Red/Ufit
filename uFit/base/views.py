@@ -47,7 +47,8 @@ def login_page(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)  # Log the user in
-                return redirect('home')  # Redirect to the home page after successful login
+                next_url = request.GET.get('next', 'home')  # Get the next URL from the request
+                return redirect(next_url)  # Redirect to the home page after successful login
             else:
                 messages.error(request, "Invalid username or password.")
         else:
