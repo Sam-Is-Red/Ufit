@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -56,9 +57,9 @@ ROOT_URLCONF = "uFit.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        'DIRS': [
-            BASE_DIR / 'templates',  # Root level templates folder
-            BASE_DIR / 'base' / 'templates',  # 'base' app templates folder
+        "DIRS": [
+            BASE_DIR / "templates",  # Root level templates folder
+            BASE_DIR / "base" / "templates",  # 'base' app templates folder
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -129,5 +130,8 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = 'base/home'  # Redirect to home page after login
-LOGOUT_REDIRECT_URL = 'base/loginpage' # Redirect to login page after
+# messaging
+ASGI_APPLICATION = "uFit.asgi.application"
+
+LOGIN_REDIRECT_URL = "base/home"  # Redirect to home page after login
+LOGOUT_REDIRECT_URL = "base/loginpage"  # Redirect to login page after
