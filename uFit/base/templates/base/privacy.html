@@ -1,8 +1,9 @@
-{% include 'navbar.html' %}
-{% block content %}
-
-<body>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}UFIT Privacy Notice{% endblock title %}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,7 +12,6 @@
             margin: 0 auto;
             color: #333;
         }
-
 
         .last-updated {
             color: #666;
@@ -82,6 +82,9 @@
     </head>
 
     <body>
+        {% include 'navbar.html' %}
+        {% block content %}
+
         <div class="header">
             <h1>UFIT Privacy Notice</h1>
             <div class="last-updated">Last updated October 29, 2024</div>
@@ -258,5 +261,7 @@
             <p>To request to review, update, or delete your personal information, please visit: __________.</p>
         </div>
         {% endblock content %}
+        {% include 'footer.html' %}
 
+        </body>
         </html>

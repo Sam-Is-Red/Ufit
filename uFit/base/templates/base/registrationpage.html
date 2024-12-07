@@ -66,16 +66,17 @@
     </style>
 </head>
 <body>
+    {% include 'navbar.html' %}
     <div class="register-container">
         <div class="logo">UFIT</div>
         {% if messages %}
-        <ul>
+        <ul class="messages">
             {% for message in messages %}
             <li style="color: red;">{{ message }}</li>
             {% endfor %}
         </ul>
         {% endif %}
-        
+
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
@@ -85,5 +86,6 @@
             <p>Already have an account? <a href="{% url 'loginpage' %}">Log in</a></p>
         </div>
     </div>
+    {% include 'footer.html' %}
 </body>
 </html>

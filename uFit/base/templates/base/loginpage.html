@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UFIT Login Page</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background-color: #f4f4f4; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
       .login-container {
         background-color: white;
         padding: 20px;
@@ -23,6 +23,21 @@
         width: 300px;
         text-align: center;
       }
+      .login-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+
+    .error-messages {
+      margin-bottom: 20px;
+      color: red;
+    }
+}
+
       /* Logo Styling */
       #uFit-logo {
         font-size: 60px;
@@ -68,14 +83,18 @@
     </style>
   </head>
   <body>
+    {% include 'navbar.html' %}
     <div class="login-container">
         <div id="uFit-logo">UFIT</div>
         {% if messages %}
-        <ul>
-        {% for message in messages %}
+        <div class="error-messages">
+          <ul>
+          {% for message in messages %}
+
         <li style="color: red;">{{ message }}</li>
         {% endfor %}
       </ul>
+      </div>
       {% endif %}
         <form method="POST">
             {% csrf_token %}
@@ -90,6 +109,7 @@
             </p>
         </div>
     </div>
+    {% include 'footer.html' %}
 </body>
 
 </html>

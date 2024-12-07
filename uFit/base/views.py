@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
+from .models import Post
 from django.contrib.auth.decorators import login_required
 
 
@@ -31,7 +32,14 @@ def chatpage(request):
 
 
 def postpage(request):
-    return render(request, "base/postpage.html")
+    if request.method == 'POST':
+        content = request.POST['content']
+        attachment = request.FILES.get('attachment')
+        Post.objects.create(content=content, attachment=attachment)
+        return redirect('postpage')  
+
+    posts = Post.objects.all()
+    return render(request, "base/postpage.html", {'posts': posts})
 
 
 def profilepage(request):

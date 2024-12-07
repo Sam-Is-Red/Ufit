@@ -50,4 +50,7 @@ class WellnessOrganization(models.Model):
     contact_info = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
 
-
+class Post(models.Model):
+    content = models.TextField()
+    attachment = models.ImageField(upload_to='attachments/', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)

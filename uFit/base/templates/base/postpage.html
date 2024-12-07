@@ -95,22 +95,37 @@
     </style>
 </head>
 <body>
+    {% include 'navbar.html' %}
     <header>
         uFit
     </header>
 
     <div class="post-container">
         <div class="post-header">Create a new post</div>
-        <textarea class="post-textbox" placeholder="Post your progress!" rows="5"></textarea>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        <textarea class="post-textbox" placeholder="Post your progress!" rows="5" required></textarea>
         <div class="attachment-input">
             <label for="fileInput" style="cursor: pointer; color: #2bca92;">Add attachments</label>
             <input type="file" id="fileInput" multiple accept="image/*" style="display: none;" onchange="previewImages(event)">
         </div>
         <div class="preview-images" id="previewContainer"></div>
         <div class="post-buttons">
-            <button class="draft-button">Save Draft</button>
             <button class="post-button">Post</button>
         </div>
+        </form>
+    </div>
+
+    <div class="posts">
+        {% for post in posts %}
+        <div class="post">
+            <p>{{ post.content }}</p>
+            {% if post.attachment %}
+            <img src="{{ post.attachment.url }}" alt="Attachment">
+            {% endif %}
+        </div>
+        {% endfor %}
     </div>
 
     <script>
@@ -130,5 +145,6 @@
             });
         }
     </script>
+            {% include 'footer.html' %}
 </body>
 </html>
