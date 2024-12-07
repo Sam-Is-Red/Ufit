@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            background-color: #2bca92;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .post-container {
+            margin-top: 20px;
+            width: 90%;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        .post-header {
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .post-textbox {
+            width: 100%;
+            background-color: #ebe5fc;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+            margin-bottom: 15px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .post-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .draft-button, .post-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+        }
+        .draft-button {
+            background-color: #7749f8;
+        }
+        .draft-button:hover {
+            background-color: #5e39c5;
+        }
+        .post-button {
+            background-color: #20c997;
+        }
+        .post-button:hover {
+            background-color: #17a47e;
+        }
+        .attachment-input {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .preview-images {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .preview-images img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        uFit
+    </header>
+
+    <div class="post-container">
+        <div class="post-header">Create a new post</div>
+        <textarea class="post-textbox" placeholder="Post your progress!" rows="5"></textarea>
+        <div class="attachment-input">
+            <label for="fileInput" style="cursor: pointer; color: #2bca92;">Add attachments</label>
+            <input type="file" id="fileInput" multiple accept="image/*" style="display: none;" onchange="previewImages(event)">
+        </div>
+        <div class="preview-images" id="previewContainer"></div>
+        <div class="post-buttons">
+            <button class="draft-button">Save Draft</button>
+            <button class="post-button">Post</button>
+        </div>
+    </div>
+
+    <script>
+        function previewImages(event) {
+            const files = event.target.files;
+            const previewContainer = document.getElementById('previewContainer');
+            previewContainer.innerHTML = ''; // Clear previous previews
+
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    previewContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+    </script>
+</body>
+</html>

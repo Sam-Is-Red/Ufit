@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            background-color: #2bca92;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .profile-container {
+            margin-top: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            object-fit: cover;
+        }
+        .edit-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #2bca92;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .edit-button:hover {
+            background-color: #218838;
+        }
+        .description {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f4e3ff;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .posts-container {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+        }
+        .post {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .post-header {
+            background-color: #2bca92;
+            color: white;
+            padding: 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            font-weight: bold;
+        }
+        .post-content {
+            padding: 15px;
+        }
+        .post img {
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        uFit
+    </header>
+
+    <div class="profile-container">
+        <input type="file" id="profileImageInput" style="display: none;" accept="image/*" onchange="loadProfileImage(event)">
+        <img src="https://via.placeholder.com/150" alt="User Profile" class="profile-image" id="profileImage" onclick="document.getElementById('profileImageInput').click()">
+        <h2>@User_Profile</h2>
+        <button class="edit-button">Edit</button>
+        <div class="description">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is a short description that the user can input.</p>
+        </div>
+    </div>
+
+    <div class="posts-container">
+        <div class="post">
+            <div class="post-header">@User_Profile</div>
+            <div class="post-content">
+                <p>This is a sample post where the user can showcase text.</p>
+            </div>
+        </div>
+        <div class="post">
+            <div class="post-header">@User_Profile</div>
+            <div class="post-content">
+                <p>Here's another post with an image</p>
+                <img src="https://via.placeholder.com/400x200" alt="Post Image">
+            </div>
+        </div>
+        <!-- Add more posts as needed -->
+    </div>
+
+    <script>
+        function loadProfileImage(event) {
+            const image = document.getElementById('profileImage');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>
