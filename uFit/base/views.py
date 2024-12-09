@@ -141,7 +141,8 @@ def homePage(request):
     posts = Post.objects.filter(
         Q(title__icontains=query) | 
         Q(body__icontains=query) | 
-        Q(host__username__icontains=query)
+        Q(host__username__icontains=query) |
+        Q(host__profile__role__icontains=query)
     ) if query else Post.objects.all()
 
     # Get upcoming events
