@@ -1,42 +1,49 @@
-
-{% block content %}
-{% if posts %}
-                {% for post in posts %}
-                <div class="post">
-<img src="{{ post.host.profile.profile_image.url|default:'https://via.placeholder.com/50' }}" alt="{{ post.host.username }}'s Profile Image" class="post-host-image" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
-                   <a href="{% url 'profilepage' post.host.id %}"><h2>@{{ post.host.username }}</h2 ></a>
-<style>
+{% block content %} {% if posts %} {% for post in posts %}
+<div class="post">
+  <img
+    src="{{ post.host.profile.profile_image.url|default:'https://via.placeholder.com/50' }}"
+    alt="{{ post.host.username }}'s Profile Image"
+    class="post-host-image"
+    style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px"
+  />
+  <a href="{% url 'profilepage' post.host.id %}"
+    ><h2>@{{ post.host.username }}</h2></a
+  >
+  <style>
+    .badge {
+      position: relative;
+      top: -10px;
+    }
     .role-student {
-        background-color: red;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 20px;
+      background-color: red;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
     }
     .role-trainer {
-        background-color: blue;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 20px;
+      background-color: blue;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
     }
     .role-wellness {
-        background-color: green;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 20px;
+      background-color: green;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
     }
-</style>
+  </style>
 
-<span class="role-{{ post.host.profile.role|lower }}">{{ post.host.profile.role }}</span>
-                   <h3>{{post.title}}</h3>
-                    <p>{{ post.body }}</p>
-                    {% if request.user == post.host %}
-                    <a href="{% url 'update-post' post.id %}">Edit</a>
-                    <a href="{% url 'delete-post' post.id %}">Delete</a>
-                    {% endif %}
-                </div>
-                {% endfor %}
-            {% else %}
-                <p>No posts found matching your search.</p>
-            {% endif %}
-
-            {% endblock content %}
+  <span class="badge role-{{ post.host.profile.role|lower }}"
+    >{{ post.host.profile.role }}</span
+  >
+  <h3>{{post.title}}</h3>
+  <p>{{ post.body }}</p>
+  {% if request.user == post.host %}
+  <a href="{% url 'update-post' post.id %}">Edit</a>
+  <a href="{% url 'delete-post' post.id %}">Delete</a>
+  {% endif %}
+</div>
+{% endfor %} {% else %}
+<p>No posts found matching your search.</p>
+{% endif %} {% endblock content %}
